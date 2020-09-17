@@ -49,16 +49,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sample_project.wsgi.application'
 
+print(os.environ.get('MYSQL_DATABASE'))
+print(os.environ.get('MYSQL_USER'))
+print(os.environ.get('MYSQL_PASSWORD'))
+print(os.environ.get('DB_HOST'))
+print(os.environ.get('MYSQL_PORT'))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'demo_db',
-        'USER': 'hemant',
-        'PASSWORD': 'hemant@#123',
-        'HOST': os.environ.get('DB_HOST', "localhost"),
-        'PORT': '3306'
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('MYSQL_PORT'),
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
